@@ -1,3 +1,4 @@
+import cors from "cors";
 import "dotenv/config";
 import express, { Request, Response } from "express";
 import crypto from "crypto";
@@ -8,6 +9,7 @@ import {
 import { saveTokens } from "./services/hubspot/token-store.js";
 
 const app = express();
+app.use(cors({ origin: "http://localhost:3000" }));
 const PORT = 3001;
 
 // In-memory store of OAuth state values (for CSRF protection).
