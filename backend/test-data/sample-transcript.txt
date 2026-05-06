@@ -1,0 +1,29 @@
+[Call transcript — 2026-05-05 — 32 minutes — Brian Halligan / HubSpot]
+
+Sales Rep: Hi Brian, thanks for taking the call today. How's your week been?
+
+Brian: Hey, no problem. It's been busy — we just wrapped up our Q2 board meeting yesterday. Lots of focus on AI investment and where we're spending engineering hours.
+
+Sales Rep: Yeah I bet. Is that what's driving your interest in our platform?
+
+Brian: Partly. Honestly, the bigger pain point right now is that our SDR team is spending too much time on lead qualification. They're touching every inbound, even ones we'd never close. We need automation but the tools we've tried either don't integrate cleanly with HubSpot or they're too aggressive with auto-sending emails. We had a bad experience with one vendor last year — they sent a templated outreach to one of our investors. That was a fun Monday.
+
+Sales Rep: Understood. So integration depth and a human-in-the-loop approval flow are non-negotiable.
+
+Brian: Exactly. Also pricing — our CFO is watching every SaaS line item right now. We can probably justify $30-50k annually if the ROI is clear. Beyond that we'd need a longer procurement cycle.
+
+Sales Rep: That fits with our mid-market tier. Let me ask — what's your timeline? Are you looking to make a decision this quarter?
+
+Brian: We'd like to. Renewal on our current tooling is end of July, so I want a replacement decided by mid-June at the latest. I have an internal review with my sales ops lead next Tuesday — would be great if you could put together a tailored demo focused specifically on inbound lead routing and the approval workflow piece.
+
+Sales Rep: Absolutely. I'll send a calendar invite for next Tuesday and a one-pager covering exactly those two areas. One thing I want to flag — do you have any other vendors you're seriously evaluating?
+
+Brian: Two others. I'd rather not name them, but you should know we're not going single-source.
+
+Sales Rep: Fair enough. Last question — who else needs to be in the loop for the decision?
+
+Brian: Me, my sales ops lead, and our VP of Revenue. CFO signs off if we're past $40k.
+
+Sales Rep: Perfect. I'll prep the demo and follow up with the one-pager by tomorrow morning.
+
+Brian: Sounds good. Talk Tuesday.

@@ -134,6 +134,57 @@ app.post("/workflows/qualify-lead", async (req: Request, res: Response) => {
   }
 });
 
+// Workflow: Summarize a call transcript and log it as a note
+app.post("/workflows/summarize-call", async (req: Request, res: Response) => {
+  const { userId, email, transcript } = req.body;
+  if (!userId || !email || !transcript) {
+    res.status(400).json({ error: "userId, email, and transcript are required" });
+    return;
+  }
+  try {
+    const { summarizeCall } = await import("./agents/workflows/summarize-call.js");
+    const output = await summarizeCall(userId, email, transcript);
+    res.json({ output });
+  } catch (err: any) {
+    console.error("Workflow error:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Workflow: Draft a personalized outreach email
+app.post("/workflows/draft-email", async (req: Request, res: Response) => {
+  const { userId, email, goal } = req.body;
+  if (!userId || !email || !goal) {
+    res.status(400).json({ error: "userId, email, and goal are required" });
+    return;
+  }
+  try {
+    const { draftOutreachEmail } = await import("./agents/workflows/draft-email.js");
+    const output = await draftOutreachEmail(userId, email, goal);
+    res.json({ output });
+  } catch (err: any) {
+    console.error("Workflow error:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Workflow: Review pipeline and recommend follow-ups
+app.post("/workflows/recommend-followups", async (req: Request, res: Response) => {
+  const { userId } = req.body;
+  if (!userId) {
+    res.status(400).json({ error: "userId is required" });
+    return;
+  }
+  try {
+    const { recommendFollowups } = await import("./agents/workflows/recommend-followups.js");
+    const output = await recommendFollowups(userId);
+    res.json({ output });
+  } catch (err: any) {
+    console.error("Workflow error:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`\n🚀 Server running on http://localhost:${PORT}`);
   console.log(`   Visit http://localhost:${PORT} to start the OAuth flow\n`);

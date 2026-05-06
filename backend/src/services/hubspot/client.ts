@@ -143,4 +143,29 @@ export class HubSpotClient {
 
     return note;
   }
+  /** Fetch all notes attached to a contact (most recent first). */
+  async getContactNotes(contactId: string, limit = 5): Promise<any> {
+    // First get note IDs associated with the contact
+    const associations = await this.authedRequest<any>({
+      method: "GET",
+      url: `/crm/v3/objects/contacts/${contactId}/associations/notes`,
+      params: { limit },
+    });
+
+    const noteIds = (associations.results ?? []).map((r: any) => r.id);
+    if (noteIds.length === 0) return { notes: [] };
+
+    // Batch-fetch the note bodies
+    const notes = await Promise.all(
+      noteIds.slice(0, limit).map((id: string) =>
+        this.authedRequest<any>({
+          method: "GET",
+          url: `/crm/v3/objects/notes/${id}`,
+          params: { properties: "hs_note_body,hs_timestamp" },
+        })
+      )
+    );
+
+    return { notes };
+  }
 }

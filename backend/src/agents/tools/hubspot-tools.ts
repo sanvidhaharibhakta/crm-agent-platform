@@ -88,6 +88,21 @@ const updateContactProperty = tool(
       }),
     }
   );
+  const getContactNotes = tool(
+    async ({ contactId, limit }: { contactId: string; limit: number }) => {
+      const result = await client.getContactNotes(contactId, limit);
+      return JSON.stringify(result);
+    },
+    {
+      name: "get_contact_notes",
+      description:
+        "Fetch the most recent notes attached to a contact. Useful for understanding past conversations and context before drafting outreach.",
+      schema: z.object({
+        contactId: z.string().describe("The HubSpot contact ID."),
+        limit: z.number().min(1).max(10).default(3).describe("How many notes to fetch."),
+      }),
+    }
+  );
 
   return [
     searchContactByEmail,
@@ -95,5 +110,6 @@ const updateContactProperty = tool(
     listRecentContacts,
     updateContactProperty,
     addNoteToContact,
+    getContactNotes,
   ];
 }
