@@ -1,3 +1,15 @@
+/**
+ * HubSpot REST API client with automatic OAuth token refresh.
+ *
+ * On every request, checks token expiry against a 5-minute safety buffer.
+ * If the token is near expiry, silently refreshes using the stored
+ * refresh token, persists the new tokens to DynamoDB, and proceeds
+ * with the original request. The agent never sees auth concerns.
+ *
+ * HubSpot rotates refresh tokens on every refresh, so the new
+ * refresh_token must be persisted alongside the new access_token.
+ */
+
 import axios, { AxiosInstance } from "axios";
 import { getTokens, saveTokens, StoredTokens } from "./token-store.js";
 import { refreshAccessToken } from "./oauth.js";

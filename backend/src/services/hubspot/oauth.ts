@@ -1,3 +1,14 @@
+/**
+ * HubSpot OAuth 2.0 authorization code flow.
+ *
+ * - buildAuthorizeUrl: generates the URL to redirect users to HubSpot's
+ *   consent screen, including a CSRF state parameter.
+ * - exchangeCodeForTokens: server-to-server swap of the temporary
+ *   authorization code for access + refresh tokens.
+ * - refreshAccessToken: uses an existing refresh token to obtain a new
+ *   access token (called automatically by HubSpotClient near expiry).
+ */
+
 import axios from "axios";
 
 const HUBSPOT_AUTHORIZE_URL = "https://app.hubspot.com/oauth/authorize";

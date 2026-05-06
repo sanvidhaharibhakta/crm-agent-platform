@@ -1,3 +1,15 @@
+/**
+ * LangChain tool definitions wrapping the HubSpotClient.
+ *
+ * Each tool exposes one CRM operation to the agent with a Zod schema
+ * (so the LLM knows what arguments to provide) and a description
+ * (so the LLM knows when to use it). Tool descriptions matter as
+ * much as the system prompt — they drive tool selection accuracy.
+ *
+ * Schemas are intentionally flat (no nested objects) because Llama 3.3
+ * struggles with nested argument structures during streaming.
+ */
+
 import { tool } from "@langchain/core/tools";
 import { z } from "zod";
 import { HubSpotClient } from "../../services/hubspot/client.js";

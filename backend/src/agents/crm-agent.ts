@@ -1,3 +1,13 @@
+/**
+ * General-purpose CRM agent. Accepts a free-text user request and decides
+ * autonomously which HubSpot tools to call to fulfill it.
+ *
+ * Uses LangChain's AgentExecutor with a tool-calling agent backed by
+ * Groq's Llama 3.3 70B. Parallel tool calls are disabled to work around
+ * a known streaming-parser bug in Llama where multiple tool calls get
+ * concatenated into malformed JSON.
+ */
+
 import { ChatGroq } from "@langchain/groq";
 import { AgentExecutor, createToolCallingAgent } from "langchain/agents";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
