@@ -141,6 +141,21 @@ curl -X POST http://localhost:3001/workflows/qualify-lead \\
 | POST | `/workflows/recommend-followups` | `{ userId }` |
 
 ---
+### What this looks like in the CRM
+
+Below is real output from the agent operating on a HubSpot test account:
+
+**Lead status updated by the AI agent (Lead Status: Open):**
+
+![Lead Status updated to Open](docs/screenshots/lead-status-updated.png)
+
+**Lead qualification reasoning note (score + rationale + suggested action):**
+
+![Lead qualification note](docs/screenshots/lead-qualification-note.png)
+
+**Structured call summary generated from a 32-minute fake transcript:**
+
+![Structured call summary note](docs/screenshots/call-summary-note.png)
 
 ## Future work
 
